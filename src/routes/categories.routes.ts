@@ -15,6 +15,8 @@ categoriesRoutes.post('/', (request, response) =>
   createCategoryController.handle(request, response)
 );
 
+console.log('teste');
+
 categoriesRoutes.get('/', (request, response) =>
   listCategoriesController.handle(request, response)
 );
