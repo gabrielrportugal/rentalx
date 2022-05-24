@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import { ImportCategoryUC } from './ImportCategoryUC';
 
 class ImportCategoryController {
-  constructor(private importCategoryUC: ImportCategoryUC) {}
-
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { file } = request;
 
-    this.importCategoryUC.execute(file);
+    const importCategoryUC = container.resolve(ImportCategoryUC);
+
+    await importCategoryUC.execute(file);
 
     return response.status(201).json({});
   }

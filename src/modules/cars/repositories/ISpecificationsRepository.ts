@@ -1,4 +1,4 @@
-import { Specification } from '../model/Specification';
+import { Specification } from '../entities/Specification';
 
 interface ICreateSpecificationDTO {
   name: string;
@@ -6,8 +6,11 @@ interface ICreateSpecificationDTO {
 }
 
 interface ISpecificationsRepository {
-  create({ description, name }: ICreateSpecificationDTO): Specification;
-  findByName(name: string): Specification | undefined;
+  create({
+    description,
+    name,
+  }: ICreateSpecificationDTO): Promise<Specification>;
+  findByName(name: string): Promise<Specification | undefined>;
 }
 
 export { ISpecificationsRepository, ICreateSpecificationDTO };
