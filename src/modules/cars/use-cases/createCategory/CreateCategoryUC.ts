@@ -1,3 +1,4 @@
+import { AppError } from 'src/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 
 import { Category } from '../../entities/Category';
@@ -21,7 +22,7 @@ class CreateCategoryUC {
     );
 
     if (categoryAlreadyExists) {
-      throw new Error('Category already exists');
+      throw new AppError('Category already exists');
     }
 
     return this.categoriesRepository.create({ name, description });

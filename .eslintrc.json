@@ -77,8 +77,9 @@
           ]
     },
     "settings": {
-        "import/resolver": {
-          "typescript": {}
-        }
+      "import/resolver": {
+        "typescript": {},
+        "node": {}
+      }
     }
 }

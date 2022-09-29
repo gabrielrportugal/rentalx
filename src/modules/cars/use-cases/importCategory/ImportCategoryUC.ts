@@ -1,5 +1,6 @@
 import { parse } from 'csv-parse';
 import fs from 'fs';
+import { AppError } from 'src/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
@@ -48,7 +49,7 @@ class ImportCategoryUC {
 
   async execute(file: Express.Multer.File): Promise<void> {
     if (!file) {
-      throw new Error('File not found');
+      throw new AppError('File not found');
     }
 
     const categories = await this.loadCategories(file);
